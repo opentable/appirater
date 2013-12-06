@@ -1,11 +1,12 @@
+version = '1.0.3'
 Pod::Spec.new do |s|
   s.name              = 'Appirater-OpenTable'
-  s.version           = '1.0.2'
+  s.version           = version
   s.platform          = :ios
   s.summary           = "A utility that reminds your iPhone app's users to review the app."
   s.homepage          = 'http://arashpayan.com/blog/2009/09/07/presenting-appirater/'
   s.author            = { 'Arash Payan' => 'arash.payan@gmail.com' }
-  s.source            = { :git => 'https://github.com/opentable/appirater.git', :tag => '1.0.2' }
+  s.source            = { :git => 'https://github.com/opentable/appirater.git', :tag => "v#{version}-OT" }
   s.source_files      = '*.{h,m}'
   s.resources         = '*.lproj'
   s.requires_arc      = true
