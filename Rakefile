@@ -4,6 +4,7 @@ require 'xcodebuilder'
 builder = XcodeBuilder::XcodeBuilder.new do |config|
 		# basic workspace config
 		config.build_dir = "./build/"
+		config.sdk = "iphonesimulator"
 		config.skip_clean = false
 		config.verbose = false
 		config.increment_plist_version = true
@@ -25,16 +26,14 @@ task :clean do
 	FileUtils.rm_rf "./pkg"
 
 	# and cocoa pods artifacts
-	FileUtils.rm_rf "FSFoundation/FSFoundation.xcworkspace"
 	FileUtils.rm_rf "Podfile.lock"
 end
 
 # pod requires a full clean and runs pod install
 task :pod => :clean do
-	system "pod install"
 end
 
 desc "Builds the pod, tags git, pod push and bump version"
-task :release => :clean do
+task :release => :pod do
 	builder.pod_release
 end
